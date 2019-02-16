@@ -12,21 +12,29 @@ int stringCalc(const std::string & str)
 {
 	if (str.empty()) return 0;
 
-	std::size_t pos;
+	auto result = 0;
+
+	std::size_t pos, start = 0;
+	auto delim_found = false;
 	for (auto delim : {",", "\n"})
 	{
 		pos = str.find(delim);
 
-		if (pos != std::string::npos)
+		while (pos != std::string::npos)
+		{
+			delim_found = true;
+			result += std::stoi(str.substr(start, pos));
+			start = pos + 1;
+			pos = str.find(delim, start);
+		}
+		if (delim_found)
 			break;
 	}
 
-	if (pos == std::string::npos)
+	if (pos == std::string::npos && !delim_found)
 	{
 		return std::stoi(str);
-		
 	}
 
-	return std::stoi(str.substr(0, pos))
-			+ std::stoi(str.substr(pos+1));
+	return result + std::stoi(str.substr(pos+1));
 }
