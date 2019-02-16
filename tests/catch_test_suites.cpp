@@ -39,7 +39,7 @@ TEST_CASE( "An empty string returns zero" )
 
 TEST_CASE( "A single number returns the value" )
 {
-	SECTION( "Returns value" )
+	SECTION( "Returns sum" )
 	{
 		REQUIRE( stringCalc("0") == 0 );
 		REQUIRE( stringCalc("1") == 1 );
@@ -57,10 +57,20 @@ TEST_CASE( "A single number returns the value" )
 
 TEST_CASE( "Two numbers, comma delimited, returns the sum" )
 {
-	SECTION( "Returns value" )
+	SECTION( "Returns sum" )
 	{
 		REQUIRE( stringCalc("0,0") == 0 );
 		REQUIRE( stringCalc("1,1") == 2 );
 		REQUIRE( stringCalc("2,2") == 4 );
+	}
+}
+
+TEST_CASE( "Two numbers, newline delimited, returns the sum" )
+{
+	SECTION( "Returns sum" )
+	{
+		REQUIRE( stringCalc("0\n0") == 0 );
+		REQUIRE( stringCalc("1\n1") == 2 );
+		REQUIRE( stringCalc("2\n2") == 4 );
 	}
 }
