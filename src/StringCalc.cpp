@@ -7,3 +7,8 @@
 
 
 #include "StringCalc.hpp"
+
+int stringCalc(const std::string & str)
+{
+	return 0;
+}
