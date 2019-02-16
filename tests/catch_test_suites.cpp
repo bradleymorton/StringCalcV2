@@ -36,3 +36,21 @@ TEST_CASE( "An empty string returns zero" )
 		REQUIRE( stringCalc("") == 0 );
 	}
 }
+
+TEST_CASE( "A single number returns the value" )
+{
+	SECTION( "Returns value" )
+	{
+		REQUIRE( stringCalc("0") == 0 );
+		REQUIRE( stringCalc("1") == 1 );
+		REQUIRE( stringCalc("2") == 2 );
+		REQUIRE( stringCalc("3") == 3 );
+		REQUIRE( stringCalc("4") == 4 );
+		REQUIRE( stringCalc("5") == 5 );
+		REQUIRE( stringCalc("5") == 5 );
+		REQUIRE( stringCalc("6") == 6 );
+		REQUIRE( stringCalc("7") == 7 );
+		REQUIRE( stringCalc("8") == 8 );
+		REQUIRE( stringCalc("9") == 9 );
+	}
+}
