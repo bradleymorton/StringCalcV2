@@ -11,17 +11,22 @@
 int stringCalc(const std::string & str)
 {
 	if (str.empty()) return 0;
-	auto pos = str.find(",");
+
+	std::size_t pos;
+	for (auto delim : {",", "\n"})
+	{
+		pos = str.find(delim);
+
+		if (pos != std::string::npos)
+			break;
+	}
+
 	if (pos == std::string::npos)
 	{
-		pos = str.find("\n");
-		if (pos == std::string::npos)
-		{
-			return std::stoi(str);
-		}
-		return std::stoi(str.substr(0, pos))
-			+ std::stoi(str.substr(pos+1));
+		return std::stoi(str);
+		
 	}
+
 	return std::stoi(str.substr(0, pos))
 			+ std::stoi(str.substr(pos+1));
 }
