@@ -14,7 +14,13 @@ int stringCalc(const std::string & str)
 	auto pos = str.find(",");
 	if (pos == std::string::npos)
 	{
-		return std::stoi(str);
+		pos = str.find("\n");
+		if (pos == std::string::npos)
+		{
+			return std::stoi(str);
+		}
+		return std::stoi(str.substr(0, pos))
+			+ std::stoi(str.substr(pos+1));
 	}
 	return std::stoi(str.substr(0, pos))
 			+ std::stoi(str.substr(pos+1));
