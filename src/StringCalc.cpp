@@ -10,5 +10,6 @@
 
 int stringCalc(const std::string & str)
 {
-	return 0;
+	if (str.empty()) return 0;
+	return std::stoi(str);
 }
