@@ -11,5 +11,11 @@
 int stringCalc(const std::string & str)
 {
 	if (str.empty()) return 0;
-	return std::stoi(str);
+	auto pos = str.find(",");
+	if (pos == std::string::npos)
+	{
+		return std::stoi(str);
+	}
+	return std::stoi(str.substr(0, pos))
+			+ std::stoi(str.substr(pos+1));
 }
