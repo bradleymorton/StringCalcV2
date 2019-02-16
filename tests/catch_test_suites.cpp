@@ -31,46 +31,44 @@
 // *********************************************************************
 TEST_CASE( "An empty string returns zero" )
 {
-	SECTION( "Returns zero" )
-	{
-		REQUIRE( stringCalc("") == 0 );
-	}
+	REQUIRE( stringCalc("") == 0 );
 }
 
 TEST_CASE( "A single number returns the value" )
 {
-	SECTION( "Returns sum" )
-	{
-		REQUIRE( stringCalc("0") == 0 );
-		REQUIRE( stringCalc("1") == 1 );
-		REQUIRE( stringCalc("2") == 2 );
-		REQUIRE( stringCalc("3") == 3 );
-		REQUIRE( stringCalc("4") == 4 );
-		REQUIRE( stringCalc("5") == 5 );
-		REQUIRE( stringCalc("5") == 5 );
-		REQUIRE( stringCalc("6") == 6 );
-		REQUIRE( stringCalc("7") == 7 );
-		REQUIRE( stringCalc("8") == 8 );
-		REQUIRE( stringCalc("9") == 9 );
-	}
+	REQUIRE( stringCalc("0") == 0 );
+	REQUIRE( stringCalc("1") == 1 );
+	REQUIRE( stringCalc("2") == 2 );REQUIRE( stringCalc("3") == 3 );
+	REQUIRE( stringCalc("4") == 4 );
+	REQUIRE( stringCalc("5") == 5 );
+	REQUIRE( stringCalc("5") == 5 );
+	REQUIRE( stringCalc("6") == 6 );
+	REQUIRE( stringCalc("7") == 7 );
+	REQUIRE( stringCalc("8") == 8 );
+	REQUIRE( stringCalc("9") == 9 );
 }
 
 TEST_CASE( "Two numbers, comma delimited, returns the sum" )
 {
-	SECTION( "Returns sum" )
-	{
-		REQUIRE( stringCalc("0,0") == 0 );
-		REQUIRE( stringCalc("1,1") == 2 );
-		REQUIRE( stringCalc("2,2") == 4 );
-	}
+	REQUIRE( stringCalc("0,0") == 0 );
+	REQUIRE( stringCalc("1,1") == 2 );
+	REQUIRE( stringCalc("2,2") == 4 );
 }
 
 TEST_CASE( "Two numbers, newline delimited, returns the sum" )
 {
-	SECTION( "Returns sum" )
-	{
-		REQUIRE( stringCalc("0\n0") == 0 );
-		REQUIRE( stringCalc("1\n1") == 2 );
-		REQUIRE( stringCalc("2\n2") == 4 );
-	}
+	REQUIRE( stringCalc("0\n0") == 0 );
+	REQUIRE( stringCalc("1\n1") == 2 );
+	REQUIRE( stringCalc("2\n2") == 4 );
+}
+
+TEST_CASE( "Three numbers, comma or newline delimited, returns the sum" )
+{
+
+	REQUIRE( stringCalc("0,0,0") == 0 );
+	REQUIRE( stringCalc("1,1,1") == 3 );
+	REQUIRE( stringCalc("2,2,2") == 6 );
+	REQUIRE( stringCalc("0\n0\n0") == 0 );
+	REQUIRE( stringCalc("1\n1\n1") == 3 );
+	REQUIRE( stringCalc("2\n2\n2") == 6 );
 }
