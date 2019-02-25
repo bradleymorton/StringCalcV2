@@ -4,7 +4,7 @@
 // Updated: 15 Feb 2019
 //
 // Source for stringCalc().
-
+#include <exception>
 
 #include "StringCalc.hpp"
 
@@ -13,6 +13,8 @@ int stringCalc(const std::string & str)
 	if (str.empty()) return 0;
 
 	auto result = 0;
+
+	if(str[1]=='-') throw std::exception();
 
 	std::size_t pos, start = 0;
 	auto delim_found = false;
@@ -23,7 +25,9 @@ int stringCalc(const std::string & str)
 		while (pos != std::string::npos)
 		{
 			delim_found = true;
-			result += std::stoi(str.substr(start, pos));
+			int current = std::stoi(str.substr(start, pos));
+			if(current<0) throw std::exception();
+			result += current;
 			start = pos + 1;
 			pos = str.find(delim, start);
 		}
@@ -33,7 +37,10 @@ int stringCalc(const std::string & str)
 
 	if (pos == std::string::npos && !delim_found)
 	{
-		return std::stoi(str);
+
+		int num = std::stoi(str);
+		if(num<0) throw std::exception();
+		return num;
 	}
 
 	return result + std::stoi(str.substr(pos+1));
