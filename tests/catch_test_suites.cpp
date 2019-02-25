@@ -72,3 +72,12 @@ TEST_CASE( "Three numbers, comma or newline delimited, returns the sum" )
 	REQUIRE( stringCalc("1\n1\n1") == 3 );
 	REQUIRE( stringCalc("2\n2\n2") == 6 );
 }
+
+TEST_CASE( "Negative numbers throw an exception" )
+{
+	REQUIRE_THROWS("-1");
+	REQUIRE_THROWS("-1,-2");
+	REQUIRE_THROWS("-1,-2,-3");
+	REQUIRE_THROWS("-1\n-2");
+	REQUIRE_THROWS("-1\n-2\n-3");
+}
